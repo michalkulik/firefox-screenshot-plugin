@@ -55,9 +55,10 @@ gh release create "v${VER}" "dist/$ASSET" \
 UPDATE_LINK="https://github.com/${REPO}/releases/download/v${VER}/${ASSET}"
 
 echo "==> Aktualizuję updates.json (${UPDATE_LINK})"
-python3 - "$VER" "$UPDATE_LINK" <<'PY'
+MINVER="$(python3 -c 'import json;print(json.load(open("manifest.json"))["browser_specific_settings"]["gecko"]["strict_min_version"])')"
+python3 - "$VER" "$UPDATE_LINK" "$MINVER" <<'PY'
 import json, sys
-ver, link = sys.argv[1], sys.argv[2]
+ver, link, minver = sys.argv[1], sys.argv[2], sys.argv[3]
 p = "updates.json"
 data = json.load(open(p))
 addon = "fullpage-screenshot@mkulik.local"
@@ -66,12 +67,12 @@ updates = [u for u in updates if u.get("version") != ver]
 updates.insert(0, {
     "version": ver,
     "update_link": link,
-    "applications": {"gecko": {"strict_min_version": "115.0"}},
+    "applications": {"gecko": {"strict_min_version": minver}},
 })
 data["addons"][addon]["updates"] = updates
 json.dump(data, open(p, "w"), ensure_ascii=False, indent=2)
 open(p, "a").write("\n")
-print("updates.json →", ver)
+print("updates.json →", ver, "(min", minver + ")")
 PY
 
 echo "==> Commituję i wypycham updates.json"
