@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ustawienia — Pełny Zrzut Strony</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <header>
+    <img src="icons/icon-48.png" alt="" width="40" height="40" />
+    <div>
+      <h1>Pełny Zrzut Strony</h1>
+      <p class="subtitle">Ustawienia zrzutów całej strony</p>
+    </div>
+  </header>
+
+  <form id="settings">
+    <fieldset>
+      <legend>Format obrazu</legend>
+
+      <label class="row">
+        <span class="label">Format</span>
+        <select id="format">
+          <option value="png">PNG (bezstratny, większy)</option>
+          <option value="jpeg">JPEG (mniejszy)</option>
+        </select>
+      </label>
+
+      <label class="row" id="qualityRow">
+        <span class="label">Jakość JPEG</span>
+        <span class="range">
+          <input type="range" id="quality" min="50" max="100" step="1" />
+          <output id="qualityValue">92</output>
+        </span>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Jakość zrzutu</legend>
+
+      <label class="row">
+        <span class="label">Rozdzielczość</span>
+        <select id="scaleMode">
+          <option value="auto">Automatyczna (jak ekran)</option>
+          <option value="1">1× (piksele CSS)</option>
+          <option value="2">2× (ostrzejsza, większy plik)</option>
+        </select>
+      </label>
+
+      <label class="row">
+        <span class="label">Przewiń stronę przed zrzutem</span>
+        <input type="checkbox" id="lazyLoad" />
+      </label>
+      <p class="hint">
+        Pomaga wczytać obrazy i sekcje ładowane przy przewijaniu. Strona wraca
+        na swoją pozycję po zakończeniu.
+      </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Zapis</legend>
+
+      <label class="row">
+        <span class="label">Pytaj o miejsce zapisu („Zapisz jako”)</span>
+        <input type="checkbox" id="saveAs" />
+      </label>
+
+      <label class="row">
+        <span class="label">Otwórz wynik w nowej karcie</span>
+        <input type="checkbox" id="openInTab" />
+      </label>
+
+      <label class="row">
+        <span class="label">Powiadomienie po zakończeniu</span>
+        <input type="checkbox" id="notify" />
+      </label>
+    </fieldset>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </form>
+
+  <footer>
+    <p>
+      Zrzuty zapisywane są w podfolderze <code>zrzuty-www</code> w katalogu
+      pobierania. Aby robić zrzuty stron otwieranych przez <code>file://</code>,
+      włącz w <code>about:addons</code> dostęp do adresów plików.
+    </p>
+  </footer>
+
+  <script src="options.js"></script>
+</body>
+</html>

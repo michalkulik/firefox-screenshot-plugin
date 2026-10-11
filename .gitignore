@@ -1,0 +1,6 @@
+# Artefakty budowania — nie commitujemy.
+/dist/
+
+# Zrzuty testowe (np. zrzuty ekranu dodane ręcznie do katalogu).
+/tailscale.com_*.png
+/screenshot-*.png

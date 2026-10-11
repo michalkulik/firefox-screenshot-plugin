@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "Pełny Zrzut Strony",
+  "version": "1.0.2",
+  "description": "Zrzut ekranu całej strony — także długiej, przewijanej — zapisany jako jeden obraz PNG lub JPEG.",
+  "author": "Michał Kulik",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "fullpage-screenshot@mkulik.local",
+      "strict_min_version": "115.0",
+      "update_url": "https://raw.githubusercontent.com/michalkulik/firefox-screenshot-plugin/main/updates.json"
+    }
+  },
+  "permissions": [
+    "tabs",
+    "downloads",
+    "storage",
+    "scripting",
+    "notifications",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "action": {
+    "default_title": "Zrzut całej strony",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  }
+}
