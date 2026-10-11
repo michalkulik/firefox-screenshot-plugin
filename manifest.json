@@ -1,14 +1,17 @@
 {
   "manifest_version": 3,
   "name": "Pełny Zrzut Strony",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Zrzut ekranu całej strony — także długiej, przewijanej — zapisany jako jeden obraz PNG lub JPEG.",
   "author": "Michał Kulik",
   "browser_specific_settings": {
     "gecko": {
       "id": "fullpage-screenshot@mkulik.local",
-      "strict_min_version": "115.0",
-      "update_url": "https://raw.githubusercontent.com/michalkulik/firefox-screenshot-plugin/main/updates.json"
+      "strict_min_version": "140.0",
+      "update_url": "https://raw.githubusercontent.com/michalkulik/firefox-screenshot-plugin/main/updates.json",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   },
   "permissions": [

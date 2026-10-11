@@ -65,7 +65,7 @@ Proces wydania nowej wersji:
 3. Opublikuj wydanie i zaktualizuj `updates.json`:
 
    ```bash
-   tools/release.sh 1.0.3 ~/Pobrane/fullpage-screenshot-1.0.3-signed.xpi
+   tools/release.sh 1.0.4 ~/Pobrane/fullpage-screenshot-1.0.4-signed.xpi
    ```
 
    Skrypt utworzy release `v1.0.3` na GitHubie z załączonym `.xpi`, wpisze go do
@@ -129,6 +129,16 @@ updates.json           manifest aktualizacji dla Firefoxa (update_url)
 tools/make_icons.py    generator ikon (Pillow)
 tools/package.sh       pakowanie do dist/*.zip
 tools/release.sh       wydanie wersji: GitHub release + updates.json
+```
+
+## Prywatność
+
+Wtyczka **nie zbiera i nie przesyła żadnych danych** — nie ma telemetrii,
+analytics ani połączeń z serwerami. Zrzuty zapisywane są wyłącznie lokalnie w
+pobranych plikach. W manifeście zadeklarowano to zgodnie z wymogiem Mozilli:
+
+```json
+"data_collection_permissions": { "required": ["none"] }
 ```
 
 ## Licencja
