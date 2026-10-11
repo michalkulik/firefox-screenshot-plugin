@@ -4,3 +4,6 @@
 # Zrzuty testowe (np. zrzuty ekranu dodane ręcznie do katalogu).
 /tailscale.com_*.png
 /screenshot-*.png
+
+# Podpisane pliki XPI (artefakty wydania, nie commitujemy).
+/*.xpi
