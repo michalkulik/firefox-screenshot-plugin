@@ -43,7 +43,9 @@ fi
 
 ASSET="fullpage-screenshot-${VER}.xpi"
 mkdir -p dist
-cp "$XPI" "dist/$ASSET"
+if [ "$XPI" != "dist/$ASSET" ]; then
+  cp "$XPI" "dist/$ASSET"
+fi
 
 echo "==> Tworzę release v${VER} na ${REPO}"
 gh release create "v${VER}" "dist/$ASSET" \

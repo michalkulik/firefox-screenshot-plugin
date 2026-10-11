@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Pełny Zrzut Strony",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Zrzut ekranu całej strony — także długiej, przewijanej — zapisany jako jeden obraz PNG lub JPEG.",
   "author": "Michał Kulik",
   "browser_specific_settings": {

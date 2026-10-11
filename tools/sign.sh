@@ -45,6 +45,8 @@ echo "==> Podpisuję Pełny Zrzut Strony ${VER} w AMO (channel=unlisted)…"
   --channel unlisted \
   --api-key "$AMO_JWT_ISSUER" \
   --api-secret "$AMO_JWT_SECRET" \
+  --timeout 900000 \
+  --approval-timeout 900000 \
   --no-input
 
 SIGNED="$(ls -t dist/web-ext-artifacts/*.xpi 2>/dev/null | head -1 || true)"
