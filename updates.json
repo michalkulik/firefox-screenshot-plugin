@@ -1,7 +1,17 @@
 {
   "addons": {
     "fullpage-screenshot@mkulik.local": {
-      "updates": []
+      "updates": [
+        {
+          "version": "1.0.3",
+          "update_link": "https://github.com/michalkulik/firefox-screenshot-plugin/releases/download/v1.0.3/fullpage-screenshot-1.0.3.xpi",
+          "applications": {
+            "gecko": {
+              "strict_min_version": "115.0"
+            }
+          }
+        }
+      ]
     }
   }
 }
