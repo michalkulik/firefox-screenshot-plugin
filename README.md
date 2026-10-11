@@ -52,17 +52,32 @@ https://raw.githubusercontent.com/michalkulik/firefox-screenshot-plugin/main/upd
 Proces wydania nowej wersji:
 
 1. Podnieś `version` w `manifest.json` i zacommituj.
-2. Zbuduj paczkę i wyślij do podpisania:
+
+2. Podpisz i opublikuj — **automatycznie przez API AMO** (zalecane):
 
    ```bash
-   tools/package.sh          # tworzy dist/fullpage-screenshot.zip
+   tools/publish.sh
    ```
 
-   Na <https://addons.mozilla.org/developers/> → **Submit a New Add-on** prześlij
-   ZIP, wybierz **„On your own"** (self-distributed), poczekaj na podpisanie i
-   pobierz podpisany plik `.xpi` z Developer Hub.
+   Skrypt podpisuje wersję w AMO przez API (JWT, `web-ext sign`) i od razu
+   publikuje release na GitHubie oraz aktualizuje `updates.json`.
 
-3. Opublikuj wydanie i zaktualizuj `updates.json`:
+   Dane dostępowe wygeneruj raz na
+   <https://addons.mozilla.org/developers/addon/api/key/> („API key" i
+   „API secret") i zapisz w `~/.config/firefox-screenshot-plugin/amo.env`
+   (wzór: `tools/amo.env.example`):
+
+   ```bash
+   AMO_JWT_ISSUER="user:12345678:123"
+   AMO_JWT_SECRET="..."
+   ```
+
+   Samo podpisanie (bez publikacji na GitHubie) to `tools/sign.sh`; wynik:
+   `dist/fullpage-screenshot-<wersja>.xpi`.
+
+3. Wariant ręczny (gdy wolisz klikanie): zbuduj paczkę `tools/package.sh`,
+   wyślij ZIP na <https://addons.mozilla.org/developers/> → **Submit a New
+   Add-on**, wybierz **„On your own"**, pobierz podpisany `.xpi` i opublikuj:
 
    ```bash
    tools/release.sh 1.0.4 ~/Pobrane/fullpage-screenshot-1.0.4-signed.xpi
@@ -128,7 +143,10 @@ icons/                 ikony (generowane skryptem)
 updates.json           manifest aktualizacji dla Firefoxa (update_url)
 tools/make_icons.py    generator ikon (Pillow)
 tools/package.sh       pakowanie do dist/*.zip
+tools/sign.sh          podpisanie w AMO przez API (web-ext, JWT)
 tools/release.sh       wydanie wersji: GitHub release + updates.json
+tools/publish.sh       pełne wydanie: podpisanie + release + updates.json
+tools/amo.env.example  wzór danych dostępowych do API AMO
 ```
 
 ## Prywatność

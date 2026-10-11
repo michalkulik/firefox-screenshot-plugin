@@ -7,3 +7,7 @@
 
 # Podpisane pliki XPI (artefakty wydania, nie commitujemy).
 /*.xpi
+
+# Lokalne dane dostępowe do API AMO.
+/amo.env
+/.amo.env
